@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div style="text-align: center; margin-top: 50px;">
+        <h2>Profil użytkownika</h2>
+        <p style="font-size: 1.5em;"><strong>Imię:</strong> {{ user.first_name }}</p>
+        <p style="font-size: 1.5em;"><strong>Nazwisko:</strong> {{ user.last_name }}</p>
+        <p style="font-size: 1.5em;"><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+{% endblock %}
