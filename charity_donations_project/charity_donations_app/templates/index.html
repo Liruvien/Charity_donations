@@ -46,7 +46,9 @@
         </section>
       </div>
 
-      <a href="{% url 'register' %}" class="btn btn--large">Załóż konto</a>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'register' %}" class="btn btn--large">Załóż konto</a>
+  {% endif %}
     </section>
 
     <section id="about-us" class="about-us">
@@ -64,9 +66,9 @@
       <h2>Komu pomagamy?</h2>
 
       <ul class="help--buttons">
-        <li data-id="1"><a href="#" class="btn btn--without-border active">Fundacjom</a></li>
-        <li data-id="2"><a href="#" class="btn btn--without-border">Organizacjom pozarządowym</a></li>
-        <li data-id="3"><a href="#" class="btn btn--without-border">Lokalnym zbiórkom</a></li>
+        <li data-id="1"><a href="#help" class="btn btn--without-border active">Fundacjom</a></li>
+        <li data-id="2"><a href="#help" class="btn btn--without-border">Organizacjom pozarządowym</a></li>
+        <li data-id="3"><a href="#help" class="btn btn--without-border">Lokalnym zbiórkom</a></li>
       </ul>
 
         <!-- SLIDE 1 - Fundacje -->
@@ -130,4 +132,8 @@
       </div>
 
     </section>
+{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'js/app.js' %}"></script>
 {% endblock %}

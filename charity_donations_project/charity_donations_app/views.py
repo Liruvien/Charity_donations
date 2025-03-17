@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.db import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
-from charity_donations_app.models import Institution, Donation
+from charity_donations_app.models import Institution, Donation, Category
 
 
 class LandingPage(View):
@@ -28,10 +28,13 @@ class LandingPage(View):
         return render(request, 'index.html', context)
 
 
-class AddDonation(View):
+class AddDonation(LoginRequiredMixin, View):
+    login_url = '/login/'
+
     def get(self, request):
-        return render(request, 'form.html')
-    
+        categories = Category.objects.all()
+        return render(request, 'form.html', {'categories': categories})
+
 
 class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'user_profile.html'
